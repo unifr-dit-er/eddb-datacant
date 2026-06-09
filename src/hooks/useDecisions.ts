@@ -32,7 +32,7 @@ const buildQueryString = (
   if (conditions.length > 0) params.set('where', conditions.join('~and'))
   params.set('limit', String(PAGE_SIZE))
   params.set('offset', String((filters.page - 1) * PAGE_SIZE))
-  params.set('sort', '-Date')
+  params.set('sort', filters.sortDir === 'asc' ? 'Date' : '-Date')
 
   return params.toString()
 }

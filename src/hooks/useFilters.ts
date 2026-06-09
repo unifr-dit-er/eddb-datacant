@@ -16,6 +16,7 @@ export const useFilters = () => {
     from: searchParams.get('from') ?? '',
     to: searchParams.get('to') ?? '',
     page: Number(searchParams.get('page') ?? '1'),
+    sortDir: searchParams.get('sort') === 'asc' ? 'asc' : 'desc',
   }
 
   const setFilter = useCallback(
@@ -25,7 +26,7 @@ export const useFilters = () => {
       // Reset page when changing any filter
       params.delete('page')
 
-      const paramName = key === 'keywords' ? 'keyword' : key
+      const paramName = key === 'keywords' ? 'keyword' : key === 'sortDir' ? 'sort' : key
 
       if (Array.isArray(value)) {
         params.delete(paramName)

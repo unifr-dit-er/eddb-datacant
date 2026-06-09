@@ -5,6 +5,7 @@ export interface Filters {
   from: string
   to: string
   page: number
+  sortDir: 'asc' | 'desc'
 }
 
 export const DEFAULT_FILTERS: Filters = {
@@ -14,4 +15,5 @@ export const DEFAULT_FILTERS: Filters = {
   from: '',
   to: '',
   page: 1,
+  sortDir: 'desc',
 }

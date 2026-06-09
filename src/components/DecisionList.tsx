@@ -5,6 +5,7 @@ import DecisionCard from '@/components/DecisionCard'
 import { useDecisions } from '@/hooks/useDecisions'
 import { useFilters } from '@/hooks/useFilters'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { ArrowDown, ArrowUp } from 'lucide-react'
 
 import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import { useCallback } from 'react'
@@ -106,9 +107,22 @@ const DecisionList = () => {
     <div className="p-6 space-y-6">
       {devCallout}
       {pageInfo && (
-        <p className="text-sm text-muted-foreground">
-          {pageInfo.totalRows} {resultUnit}
-        </p>
+        <div className="flex items-center justify-between">
+          <p className="text-sm text-muted-foreground">
+            {pageInfo.totalRows} {resultUnit}
+          </p>
+          <button
+            onClick={() => setFilter('sortDir', filters.sortDir === 'desc' ? 'asc' : 'desc')}
+            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {filters.sortDir === 'desc' ? (
+              <ArrowDown className="h-3.5 w-3.5" />
+            ) : (
+              <ArrowUp className="h-3.5 w-3.5" />
+            )}
+            Date
+          </button>
+        </div>
       )}
 
       <div className="space-y-3">
