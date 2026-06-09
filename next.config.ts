@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'standalone',
-  basePath: '/dataprotectionlaw',
+  basePath: '/datacant',
   images: { unoptimized: true },
 };
 
