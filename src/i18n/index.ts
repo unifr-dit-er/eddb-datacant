@@ -18,6 +18,7 @@ export interface Translations {
   'sidebar.period.label': string
   'sidebar.period.from': string
   'sidebar.period.to': string
+  'sidebar.clear': string
   'sidebar.resetFilters': string
   'decision.loading': string
   'decision.copyLink': string

@@ -14,6 +14,7 @@ export const de: Translations = {
   'sidebar.period.label': 'Zeitraum',
   'sidebar.period.from': 'Von',
   'sidebar.period.to': 'Bis',
+  'sidebar.clear': 'Zurücksetzen',
   'sidebar.resetFilters': 'Filter zurücksetzen',
   'decision.loading': 'Wird geladen…',
   'decision.copyLink': 'Link kopieren',

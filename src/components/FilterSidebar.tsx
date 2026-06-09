@@ -24,16 +24,34 @@ import type { Keyword } from '@/types/keyword'
 import { ChevronRight } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
 
-const SectionLabel = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-sidebar-foreground/45 mb-2.5">
-    {children}
-  </p>
+const SectionHeader = ({
+  children,
+  onReset,
+  resetLabel,
+}: {
+  children: React.ReactNode
+  onReset?: () => void
+  resetLabel?: string
+}) => (
+  <div className="flex items-center justify-between mb-2.5">
+    <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-sidebar-foreground/45">
+      {children}
+    </p>
+    {onReset && (
+      <button
+        onClick={onReset}
+        className="text-[11px] text-sidebar-foreground/40 hover:text-sidebar-foreground/70 transition-colors"
+      >
+        {resetLabel}
+      </button>
+    )}
+  </div>
 )
 
 const Divider = () => <div className="h-px bg-sidebar-border/50 my-1" />
 
 const FilterSidebar = () => {
-  const { filters, setFilter, resetFilters } = useFilters()
+  const { filters, setFilter, resetFilters, resetFilter } = useFilters()
   const { data: keywords = [] } = useKeywords()
   const { t, langSuffix } = useLanguage()
   const [qInput, setQInput] = useState(filters.q)
@@ -101,7 +119,12 @@ const FilterSidebar = () => {
 
       {/* Search */}
       <div>
-        <SectionLabel>{t('sidebar.search.label')}</SectionLabel>
+        <SectionHeader
+          onReset={filters.q ? () => resetFilter('q') : undefined}
+          resetLabel={t('sidebar.clear')}
+        >
+          {t('sidebar.search.label')}
+        </SectionHeader>
         <Input
           placeholder={t('sidebar.search.placeholder')}
           value={qInput}
@@ -116,7 +139,12 @@ const FilterSidebar = () => {
 
       {/* Canton */}
       <div>
-        <SectionLabel>{t('sidebar.canton.label')}</SectionLabel>
+        <SectionHeader
+          onReset={filters.canton ? () => resetFilter('canton') : undefined}
+          resetLabel={t('sidebar.clear')}
+        >
+          {t('sidebar.canton.label')}
+        </SectionHeader>
         <Select
           value={filters.canton || '_all'}
           onValueChange={(v) => setFilter('canton', v === '_all' || v === null ? '' : v)}
@@ -139,7 +167,12 @@ const FilterSidebar = () => {
 
       {/* Period */}
       <div>
-        <SectionLabel>{t('sidebar.period.label')}</SectionLabel>
+        <SectionHeader
+          onReset={(filters.from || filters.to) ? () => resetFilter('period') : undefined}
+          resetLabel={t('sidebar.clear')}
+        >
+          {t('sidebar.period.label')}
+        </SectionHeader>
         <div className="space-y-2">
           <div>
             <p className="text-[11px] text-sidebar-foreground/40 mb-1 tracking-widest uppercase">
@@ -170,15 +203,27 @@ const FilterSidebar = () => {
           <Divider />
           <div>
             <div className="flex items-center justify-between mb-2.5">
-              <SectionLabel>{t('sidebar.keywords.label')}</SectionLabel>
-              {openCategories.size > 0 && (
-                <button
-                  onClick={() => setOpenCategories(new Set())}
-                  className="text-[11px] text-sidebar-foreground/40 hover:text-sidebar-foreground/70 transition-colors -mt-2.5"
-                >
-                  {t('sidebar.keywords.collapseAll')}
-                </button>
-              )}
+              <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-sidebar-foreground/45">
+                {t('sidebar.keywords.label')}
+              </p>
+              <div className="flex items-center gap-2.5">
+                {filters.keywords.length > 0 && (
+                  <button
+                    onClick={() => resetFilter('keywords')}
+                    className="text-[11px] text-sidebar-foreground/40 hover:text-sidebar-foreground/70 transition-colors"
+                  >
+                    {t('sidebar.clear')}
+                  </button>
+                )}
+                {openCategories.size > 0 && (
+                  <button
+                    onClick={() => setOpenCategories(new Set())}
+                    className="text-[11px] text-sidebar-foreground/40 hover:text-sidebar-foreground/70 transition-colors"
+                  >
+                    {t('sidebar.keywords.collapseAll')}
+                  </button>
+                )}
+              </div>
             </div>
             <div className="space-y-0.5">
               {sortedCategories.map((category) => {
@@ -200,9 +245,21 @@ const FilterSidebar = () => {
                       </span>
                       <div className="flex items-center gap-1.5 shrink-0 ml-2">
                         {selectedCount > 0 && (
-                          <span className="text-[10px] bg-primary text-primary-foreground rounded-full px-1.5 leading-5 font-semibold">
-                            {selectedCount}
-                          </span>
+                          <>
+                            <span className="text-[10px] bg-primary text-primary-foreground rounded-full px-1.5 leading-5 font-semibold">
+                              {selectedCount}
+                            </span>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                const catIds = catKeywords.map((kw) => kw.id)
+                                setFilter('keywords', filters.keywords.filter((k) => !catIds.includes(k)))
+                              }}
+                              className="text-[10px] text-sidebar-foreground/40 hover:text-sidebar-foreground/70 transition-colors leading-none"
+                            >
+                              ×
+                            </button>
+                          </>
                         )}
                         <ChevronRight
                           className={cn(

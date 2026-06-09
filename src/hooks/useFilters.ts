@@ -46,7 +46,25 @@ export const useFilters = () => {
     router.push(pathname)
   }, [router, pathname])
 
-  return { filters, setFilter, resetFilters }
+  const resetFilter = useCallback(
+    (key: 'q' | 'canton' | 'period' | 'keywords') => {
+      const params = new URLSearchParams(searchParams.toString())
+      params.delete('page')
+      if (key === 'period') {
+        params.delete('from')
+        params.delete('to')
+      } else if (key === 'keywords') {
+        params.delete('keyword')
+      } else {
+        params.delete(key)
+      }
+      const qs = params.toString()
+      router.push(qs ? `${pathname}?${qs}` : pathname)
+    },
+    [searchParams, router, pathname]
+  )
+
+  return { filters, setFilter, resetFilters, resetFilter }
 }
 
 // Re-export DEFAULT_FILTERS for convenience (not used in hook body but available)
