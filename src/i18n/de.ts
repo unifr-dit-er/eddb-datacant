@@ -30,6 +30,7 @@ export const de: Translations = {
   'footer.faculty.url': 'https://www.unifr.ch/ius',
   'footer.institute': 'Institut für Europarecht',
   'footer.institute.url': 'https://www.unifr.ch/ius/euroinstitut',
+  'footer.license.content': 'Inhalte',
   'footer.eddb': 'Datenbank unterstützt durch den Dienst',
   'footer.eddb.of': 'von',
 }

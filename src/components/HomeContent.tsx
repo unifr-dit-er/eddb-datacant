@@ -72,7 +72,7 @@ const HomeContent = () => {
         <div className="flex-1 overflow-y-auto">
           <DecisionList />
         </div>
-        <footer className="shrink-0 border-t border-border px-6 py-2 flex items-center justify-between gap-6">
+        <footer className="shrink-0 border-t border-border px-6 py-2 flex items-center justify-between gap-6 [&_a]:transition-colors">
           <p className="flex items-center gap-2 text-[11px] tracking-[0.25em] uppercase font-semibold text-muted-foreground/60">
             <span className="inline-block h-2.5 w-2.5 bg-primary shrink-0" />
             <a href={t('footer.faculty.url')} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
@@ -83,6 +83,29 @@ const HomeContent = () => {
               {t('footer.institute')}
             </a>
           </p>
+          <div className="flex items-center gap-3 text-[11px] font-semibold text-muted-foreground/50">
+            <a
+              href="https://creativecommons.org/publicdomain/zero/1.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-muted-foreground"
+              title="CC0 1.0 Universal"
+            >
+              <span className="border border-current rounded px-1 py-px tracking-normal font-bold text-[10px]">CC0</span>
+              <span className="tracking-[0.15em] uppercase">PDF</span>
+            </a>
+            <span className="text-muted-foreground/30">·</span>
+            <a
+              href="https://creativecommons.org/licenses/by-nc/4.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-muted-foreground"
+              title="CC BY-NC 4.0"
+            >
+              <span className="border border-current rounded px-1 py-px tracking-normal font-bold text-[10px]">CC BY-NC</span>
+              <span className="tracking-[0.15em] uppercase">{t('footer.license.content')}</span>
+            </a>
+          </div>
           <p className="text-[11px] tracking-[0.25em] uppercase font-semibold text-muted-foreground/60">
             {t('footer.eddb')}{' '}
             <a href="https://www.unifr.ch/it/fr/eddb.html" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">EDDB</a>

@@ -34,6 +34,7 @@ export interface Translations {
   'footer.faculty.url': string
   'footer.institute': string
   'footer.institute.url': string
+  'footer.license.content': string
   'footer.eddb': string
   'footer.eddb.of': string
 }
