@@ -9,21 +9,21 @@ git pull
 ## 2. Rebuilder l'image
 
 ```bash
-podman build -t eddb-dataprotectionlaw:latest .
+podman build -t eddb-datacant:latest .
 ```
 
 ## 3. Redémarrer le service
 
 ```bash
-systemctl --user restart eddb-dataprotectionlaw.service
+systemctl --user restart eddb-datacant.service
 ```
 
 ## Vérification
 
 ```bash
 # Vérifier que le service tourne
-systemctl --user status eddb-dataprotectionlaw.service
+systemctl --user status eddb-datacant.service
 
 # Consulter les logs
-podman logs -f eddb-dataprotectionlaw
+podman logs -f eddb-datacant
 ```

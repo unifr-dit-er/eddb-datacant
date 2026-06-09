@@ -1,0 +1,15 @@
+[Unit]
+Description=Eddb Datacant Container
+
+[Container]
+Label=app=eddb-datacant
+ContainerName=eddb-datacant
+Image=localhost/eddb-datacant:latest
+PublishPort=8085:3000
+Environment=NOCODB_API_TOKEN=your_token_here
+
+[Service]
+ExecStartPre=/usr/bin/podman rm -f eddb-datacant
+
+[Install]
+WantedBy=default.target

@@ -1,4 +1,4 @@
-# EDDB — Droit de la protection des données
+# Datacant — Jurisprudence cantonale en matière de protection des données
 
 Dashboard de jurisprudence en droit de la protection des données, alimenté par NocoDB.
 
@@ -19,7 +19,7 @@ Dashboard de jurisprudence en droit de la protection des données, alimenté par
 
 ```bash
 git clone <url-du-repo>
-cd eddb-dataprotectionlaw
+cd eddb-datacant
 npm install
 ```
 
@@ -39,7 +39,7 @@ NOCODB_API_TOKEN=your_token_here
 npm run dev
 ```
 
-L'application est accessible sur [http://localhost:3000/dataprotectionlaw](http://localhost:3000/dataprotectionlaw).
+L'application est accessible sur [http://localhost:3000/datacant](http://localhost:3000/datacant).
 
 ## Production
 

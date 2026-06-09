@@ -9,7 +9,7 @@
 
 ```bash
 git clone <url-du-repo>
-cd eddb-dataprotectionlaw
+cd eddb-datacant
 ```
 
 ## 2. Créer le fichier Quadlet
@@ -17,10 +17,10 @@ cd eddb-dataprotectionlaw
 Copier le template et l'adapter :
 
 ```bash
-cp eddb-dataprotectionlaw.container.example eddb-dataprotectionlaw.container
+cp eddb-datacant.container.example eddb-datacant.container
 ```
 
-Puis éditer `eddb-dataprotectionlaw.container` :
+Puis éditer `eddb-datacant.container` :
 - Remplacer `your_token_here` par le vrai token NocoDB
 - Ajuster `PublishPort` si nécessaire (port externe:3000)
 
@@ -29,32 +29,33 @@ Puis éditer `eddb-dataprotectionlaw.container` :
 ## 3. Déployer le fichier Quadlet
 
 ```bash
-cp eddb-dataprotectionlaw.container /home/podman/.config/containers/systemd/
+cp eddb-datacant.container /home/podman/.config/containers/systemd/
 ```
 
 ## 4. Builder l'image
 
 ```bash
-podman build -t eddb-dataprotectionlaw:latest .
+podman build -t eddb-datacant:latest .
 ```
 
 ## 5. Démarrer le service
 
 ```bash
 systemctl --user daemon-reload
-systemctl --user start eddb-dataprotectionlaw.service
+systemctl --user start eddb-datacant.service
 ```
 
 ## Commandes utiles
 
 ```bash
 # Voir les logs
-podman logs -f eddb-dataprotectionlaw
+podman logs -f eddb-datacant
 
 # Statut du service
-systemctl --user status eddb-dataprotectionlaw.service
+systemctl --user status eddb-datacant.service
 
 # Redémarrer après un rebuild
-podman build -t eddb-dataprotectionlaw:latest .
-systemctl --user restart eddb-dataprotectionlaw.service
+podman build -t eddb-datacant:latest .
+systemctl --user restart eddb-datacant.service
 ```
+

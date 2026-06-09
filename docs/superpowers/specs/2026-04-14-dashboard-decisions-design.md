@@ -1,7 +1,7 @@
 # Design : Dashboard Décisions de Protection des Données
 
 **Date :** 2026-04-14
-**Projet :** eddb-dataprotectionlaw
+**Projet :** eddb-datacant
 **Stack :** Next.js 15 (App Router) · TypeScript · Tailwind CSS · shadcn/ui · TanStack Query · NocoDB
 
 ---
