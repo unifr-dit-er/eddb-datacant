@@ -23,7 +23,7 @@ const buildQueryString = (
   const params = new URLSearchParams()
   const conditions: string[] = []
 
-  if (filters.q) conditions.push(`(Description${langSuffix},like,%${filters.q}%)`)
+  if (filters.q) conditions.push(`((Description${langSuffix},like,%${filters.q}%)~or(Abstract${langSuffix},like,%${filters.q}%))`)
   if (filters.canton) conditions.push(`(Canton,eq,${filters.canton})`)
   if (filters.from) conditions.push(`(Date,ge,exactDate,${filters.from})`)
   if (filters.to) conditions.push(`(Date,le,exactDate,${filters.to})`)
