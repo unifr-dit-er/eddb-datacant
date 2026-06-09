@@ -87,6 +87,18 @@ const DecisionPanel = ({ decisionId, onClose }: DecisionPanelProps) => {
 
         {decision && (
           <div className="space-y-4">
+            {decision.pdfUrl && (
+              <a
+                href={decision.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-base text-primary hover:text-primary/80 transition-colors font-medium -mt-2 mb-6 block"
+              >
+                <Download className="h-4 w-4" />
+                {t('decision.downloadPdf')}
+              </a>
+            )}
+
             <div className="flex items-center gap-2.5">
               {decision.canton && (
                 <span
@@ -142,17 +154,6 @@ const DecisionPanel = ({ decisionId, onClose }: DecisionPanelProps) => {
               </div>
             )}
 
-            {decision.pdfUrl && (
-              <a
-                href={decision.pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-base text-primary hover:text-primary/80 transition-colors font-medium"
-              >
-                <Download className="h-4 w-4" />
-                {t('decision.downloadPdf')}
-              </a>
-            )}
           </div>
         )}
       </SheetContent>
