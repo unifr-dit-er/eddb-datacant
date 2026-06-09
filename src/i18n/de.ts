@@ -1,7 +1,7 @@
 import type { Translations } from './index'
 
 export const de: Translations = {
-  'header.title': 'Datenbank zur Rechtsprechung auf kantonaler Ebene zum Datenschutzrecht',
+  'header.title': 'Datenbank zur kantonalen Rechtsprechung im Bereich des Datenschutzes',
   'sidebar.subtitle': 'Rechtsprechung · CH',
   'sidebar.search.label': 'Suche',
   'sidebar.search.placeholder': 'Titel, Stichwort…',

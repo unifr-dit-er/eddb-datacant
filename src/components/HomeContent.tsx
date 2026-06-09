@@ -21,9 +21,7 @@ const HomeContent = () => {
   const { fontSize, setFontSize, fontSizes, fontSizeLabels } = useFontSize()
 
   useEffect(() => {
-    document.title = locale === 'de'
-      ? 'Urteils-Datenbank Datenschutz'
-      : 'Base de données — Protection des données'
+    document.title = 'Datacant'
   }, [locale])
 
   const decisionId = searchParams.get('decision')
@@ -40,6 +38,9 @@ const HomeContent = () => {
       <aside className="w-80 shrink-0 bg-sidebar text-sidebar-foreground flex flex-col overflow-hidden border-r border-sidebar-border">
         <div className="bg-white px-4 py-4 shrink-0">
           <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/unifr.png`} alt="Université de Fribourg" width={340} height={84} className="h-10 w-auto object-contain" loading="eager" priority />
+        </div>
+        <div className="px-4 py-3 shrink-0">
+          <span className="text-lg font-bold tracking-tight text-sidebar-foreground">Datacant</span>
         </div>
         <div className="h-px bg-sidebar-border/60 shrink-0" />
         <ScrollArea className="flex-1 min-h-0">
