@@ -15,7 +15,7 @@ import { useFilters } from '@/hooks/useFilters'
 import { getCantonLabel } from '@/lib/cantons'
 import { cn } from '@/lib/utils'
 import { Check, Copy, Download } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface DecisionPanelProps {
   decisionId: string | null
@@ -27,6 +27,20 @@ const DecisionPanel = ({ decisionId, onClose }: DecisionPanelProps) => {
   const { t, locale, langSuffix } = useLanguage()
   const { filters, setFilter } = useFilters()
   const [linkCopied, setLinkCopied] = useState(false)
+  const [isOpen, setIsOpen] = useState(!!decisionId)
+
+  // The open/closed state is kept local rather than driven directly by
+  // `decisionId` so the sheet always closes instantly on click — in some
+  // production setups the URL update triggered by onClose() can lag or be
+  // cached, which otherwise left the panel stuck open.
+  useEffect(() => {
+    if (decisionId) setIsOpen(true)
+  }, [decisionId])
+
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open)
+    if (!open) onClose()
+  }
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href)
@@ -66,7 +80,7 @@ const DecisionPanel = ({ decisionId, onClose }: DecisionPanelProps) => {
     : ''
 
   return (
-    <Sheet open={!!decisionId} onOpenChange={(open) => !open && onClose()}>
+    <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetContent className="overflow-y-auto px-6 pb-6 w-[42vw] min-w-[420px] max-w-[760px] sm:max-w-[760px]" showCloseButton={false}>
         <SheetHeader className="px-0 pt-6 pb-0 mb-6">
           <SheetTitle className="font-heading text-2xl font-bold leading-snug text-foreground">
