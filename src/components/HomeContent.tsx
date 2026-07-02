@@ -16,7 +16,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { ChevronRight, Menu } from 'lucide-react'
 
-const SidebarContent = ({ licenseContentLabel }: { licenseContentLabel: string }) => (
+const SidebarContent = () => (
   <>
     <div className="bg-white px-4 py-4 shrink-0">
       <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/unifr.png`} alt="Université de Fribourg" width={340} height={84} className="h-10 w-auto object-contain" loading="eager" priority />
@@ -28,30 +28,6 @@ const SidebarContent = ({ licenseContentLabel }: { licenseContentLabel: string }
     <ScrollArea className="flex-1 min-h-0">
       <FilterSidebar />
     </ScrollArea>
-    <div className="h-px bg-sidebar-border/60 shrink-0" />
-    <div className="px-4 py-3 shrink-0 flex items-center gap-3 text-[11px] font-semibold text-sidebar-foreground/35">
-      <a
-        href="https://creativecommons.org/publicdomain/zero/1.0/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-1.5 hover:text-sidebar-foreground/60 transition-colors"
-        title="CC0 1.0 Universal"
-      >
-        <span className="border border-current rounded px-1 py-px tracking-normal font-bold text-[10px]">CC0</span>
-        <span className="tracking-[0.15em] uppercase">PDF</span>
-      </a>
-      <span className="text-sidebar-foreground/20">·</span>
-      <a
-        href="https://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-1.5 hover:text-sidebar-foreground/60 transition-colors"
-        title="CC BY-NC 4.0"
-      >
-        <span className="border border-current rounded px-1 py-px tracking-normal font-bold text-[10px]">CC BY-NC</span>
-        <span className="tracking-[0.15em] uppercase">{licenseContentLabel}</span>
-      </a>
-    </div>
   </>
 )
 
@@ -80,14 +56,14 @@ const HomeContent = () => {
     <div className="flex h-screen overflow-hidden">
       {/* Sidebar — desktop only */}
       <aside className="hidden lg:flex w-80 shrink-0 bg-sidebar text-sidebar-foreground flex-col overflow-hidden border-r border-sidebar-border">
-        <SidebarContent licenseContentLabel={t('footer.license.content')} />
+        <SidebarContent />
       </aside>
 
       {/* Sidebar — mobile/tablet drawer */}
       <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
         <SheetContent side="left" className="w-80 p-0 bg-sidebar text-sidebar-foreground flex flex-col gap-0 lg:hidden" showCloseButton={false}>
           <VisuallyHidden><SheetTitle>Filtres</SheetTitle></VisuallyHidden>
-          <SidebarContent licenseContentLabel={t('footer.license.content')} />
+          <SidebarContent />
         </SheetContent>
       </Sheet>
 

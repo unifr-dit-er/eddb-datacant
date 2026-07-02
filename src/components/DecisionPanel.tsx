@@ -88,15 +88,26 @@ const DecisionPanel = ({ decisionId, onClose }: DecisionPanelProps) => {
         {decision && (
           <div className="space-y-4">
             {decision.pdfUrl && (
-              <a
-                href={decision.pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-base text-primary hover:text-primary/80 transition-colors font-medium -mt-2 mb-6 block"
-              >
-                <Download className="h-4 w-4" />
-                {t('decision.downloadPdf')}
-              </a>
+              <div className="flex items-center gap-2 -mt-2 mb-6">
+                <a
+                  href={decision.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-base text-primary hover:text-primary/80 transition-colors font-medium"
+                >
+                  <Download className="h-4 w-4" />
+                  {t('decision.downloadPdf')}
+                </a>
+                <a
+                  href="https://creativecommons.org/publicdomain/zero/1.0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 text-muted-foreground/60 hover:text-foreground transition-colors"
+                  title="CC0 1.0 Universal"
+                >
+                  <span className="border border-current rounded px-1 py-px tracking-normal font-bold text-[9px]">CC0</span>
+                </a>
+              </div>
             )}
 
             <div className="flex items-center gap-2.5">
@@ -119,6 +130,17 @@ const DecisionPanel = ({ decisionId, onClose }: DecisionPanelProps) => {
             <Card className="gap-0 py-0">
               <CardContent className="p-4">
                 <p className="text-base leading-relaxed text-foreground/85">{decision.abstract}</p>
+                <div className="mt-3 pt-2 border-t border-border/60 flex justify-end">
+                  <a
+                    href="https://creativecommons.org/licenses/by-nc/4.0/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground/60 hover:text-foreground transition-colors"
+                    title="CC BY-NC 4.0"
+                  >
+                    <span className="border border-current rounded px-1 py-px tracking-normal font-bold text-[9px]">CC BY-NC</span>
+                  </a>
+                </div>
               </CardContent>
             </Card>
 
