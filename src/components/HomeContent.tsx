@@ -1,5 +1,6 @@
 'use client'
 
+import AboutDialog from '@/components/AboutDialog'
 import DecisionList from '@/components/DecisionList'
 import DecisionPanel from '@/components/DecisionPanel'
 import FilterSidebar from '@/components/FilterSidebar'
@@ -103,6 +104,8 @@ const HomeContent = () => {
             <h1 className="text-sm lg:text-base font-semibold text-foreground leading-snug truncate">
               {t('header.title')}
             </h1>
+            <div className="w-px h-4 bg-border shrink-0" />
+            <AboutDialog />
           </div>
           <div className="flex items-center gap-3 shrink-0">
             <Select value={fontSize} onValueChange={(v) => setFontSize(v as typeof fontSize)}>

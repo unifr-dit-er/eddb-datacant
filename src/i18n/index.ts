@@ -37,6 +37,8 @@ export interface Translations {
   'footer.license.content': string
   'footer.eddb': string
   'footer.eddb.of': string
+  'about.title': string
+  'about.content': string
 }
 
 export const LOCALE_STORAGE_KEY = 'locale'

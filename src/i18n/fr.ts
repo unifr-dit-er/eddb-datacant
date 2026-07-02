@@ -33,4 +33,7 @@ export const fr: Translations = {
   'footer.license.content': 'Contenus',
   'footer.eddb': 'Base de données soutenue par la prestation',
   'footer.eddb.of': 'de',
+  'about.title': 'À propos',
+  'about.content':
+    "La base de données des arrêts cantonaux en matière de protection des données rend accessible au public la jurisprudence cantonale relative à la protection des données depuis 1984. La base de données est continuellement mise à jour. Pour chaque décision, un résumé est disponible, élaboré par les chercheur-euse-s de l'Institut de droit européen de l'Université de Fribourg. Ils sont disponibles en langue allemande et en langue française. La base de données s'adresse tant aux praticien-ne-s du droit de la protection des données, tels que les représentant-e-s des autorités et les avocat-e-s, qu'au monde académique.",
 }
