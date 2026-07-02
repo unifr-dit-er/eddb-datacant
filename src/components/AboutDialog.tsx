@@ -1,6 +1,6 @@
 'use client'
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Separator } from '@/components/ui/separator'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { Info } from 'lucide-react'
@@ -24,7 +24,7 @@ const AboutDialog = () => {
           <DialogTitle>{t('header.title')}</DialogTitle>
         </DialogHeader>
 
-        <p className="text-sm text-muted-foreground leading-relaxed">{t('about.content')}</p>
+        <DialogDescription className="text-sm text-muted-foreground leading-relaxed">{t('about.content')}</DialogDescription>
 
         <Separator />
 
