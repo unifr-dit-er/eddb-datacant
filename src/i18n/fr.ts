@@ -18,7 +18,7 @@ export const fr: Translations = {
   'sidebar.resetFilters': 'Réinitialiser les filtres',
   'decision.loading': 'Chargement…',
   'decision.copyLink': 'Copier le lien',
-  'decision.downloadPdf': 'Télécharger le document PDF',
+  'decision.downloadPdf': "Télécharger l'arrêt en PDF",
   'decisions.error': 'Impossible de charger les décisions.',
   'decisions.empty': 'Aucune décision ne correspond à vos critères.',
   'decisions.resultUnit_singular': 'décision',
