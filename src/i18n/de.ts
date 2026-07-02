@@ -18,6 +18,7 @@ export const de: Translations = {
   'sidebar.resetFilters': 'Filter zurücksetzen',
   'decision.loading': 'Wird geladen…',
   'decision.copyLink': 'Link kopieren',
+  'decision.linkCopied': 'Link kopiert',
   'decision.downloadPdf': 'Urteil als PDF herunterladen',
   'decisions.error': 'Entscheide konnten nicht geladen werden.',
   'decisions.empty': 'Keine Entscheide entsprechen Ihren Kriterien.',

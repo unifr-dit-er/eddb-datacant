@@ -14,7 +14,8 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { useFilters } from '@/hooks/useFilters'
 import { getCantonLabel } from '@/lib/cantons'
 import { cn } from '@/lib/utils'
-import { Copy, Download } from 'lucide-react'
+import { Check, Copy, Download } from 'lucide-react'
+import { useState } from 'react'
 
 interface DecisionPanelProps {
   decisionId: string | null
@@ -25,9 +26,12 @@ const DecisionPanel = ({ decisionId, onClose }: DecisionPanelProps) => {
   const { data: decision, isLoading } = useDecision(decisionId)
   const { t, locale, langSuffix } = useLanguage()
   const { filters, setFilter } = useFilters()
+  const [linkCopied, setLinkCopied] = useState(false)
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href)
+    setLinkCopied(true)
+    setTimeout(() => setLinkCopied(false), 2000)
   }
 
   const handleCantonClick = () => {
@@ -64,17 +68,10 @@ const DecisionPanel = ({ decisionId, onClose }: DecisionPanelProps) => {
   return (
     <Sheet open={!!decisionId} onOpenChange={(open) => !open && onClose()}>
       <SheetContent className="overflow-y-auto px-6 pb-6 w-[42vw] min-w-[420px] max-w-[760px] sm:max-w-[760px]" showCloseButton={false}>
-        <SheetHeader className="flex flex-row items-start justify-between gap-3 px-0 pt-6 pb-0 mb-6">
-          <SheetTitle className="font-heading text-2xl font-bold leading-snug flex-1 text-foreground">
+        <SheetHeader className="px-0 pt-6 pb-0 mb-6">
+          <SheetTitle className="font-heading text-2xl font-bold leading-snug text-foreground">
             {decision?.title ?? (isLoading ? t('decision.loading') : '')}
           </SheetTitle>
-          <button
-            onClick={handleCopyLink}
-            title={t('decision.copyLink')}
-            className="text-muted-foreground hover:text-foreground transition-colors mt-0.5 shrink-0"
-          >
-            <Copy className="h-4 w-4" />
-          </button>
         </SheetHeader>
 
         {isLoading && (
@@ -176,6 +173,19 @@ const DecisionPanel = ({ decisionId, onClose }: DecisionPanelProps) => {
               </div>
             )}
 
+            <div className="pt-4 border-t border-border">
+              <button
+                onClick={handleCopyLink}
+                title={t('decision.copyLink')}
+                className={cn(
+                  'flex items-center gap-1.5 text-sm font-medium transition-colors cursor-pointer',
+                  linkCopied ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+                )}
+              >
+                {linkCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                {linkCopied ? t('decision.linkCopied') : t('decision.copyLink')}
+              </button>
+            </div>
           </div>
         )}
       </SheetContent>

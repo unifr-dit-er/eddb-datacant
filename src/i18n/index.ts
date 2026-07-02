@@ -22,6 +22,7 @@ export interface Translations {
   'sidebar.resetFilters': string
   'decision.loading': string
   'decision.copyLink': string
+  'decision.linkCopied': string
   'decision.downloadPdf': string
   'decisions.error': string
   'decisions.empty': string
