@@ -1,15 +1,16 @@
+import { describe, it, expect } from 'vitest'
 import { getTranslations, getLangSuffix } from '../index'
 
 describe('getTranslations', () => {
   it('returns french translations for "fr"', () => {
     const t = getTranslations('fr')
-    expect(t['sidebar.title']).toBe('Protection des données')
+    expect(t['sidebar.subtitle']).toBe('Jurisprudence · CH')
     expect(t['sidebar.search.label']).toBe('Recherche')
   })
 
   it('returns german translations for "de"', () => {
     const t = getTranslations('de')
-    expect(t['sidebar.title']).toBe('Datenschutz')
+    expect(t['sidebar.subtitle']).toBe('Rechtsprechung · CH')
     expect(t['sidebar.search.label']).toBe('Suche')
   })
 

@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react'
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { useFilters } from '../useFilters'
 
 // Mock next/navigation
@@ -27,6 +27,7 @@ describe('useFilters', () => {
       from: '',
       to: '',
       page: 1,
+      sortDir: 'desc',
     })
   })
 

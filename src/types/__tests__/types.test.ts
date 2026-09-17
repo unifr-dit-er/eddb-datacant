@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import type { Decision } from '../decision'
 import type { Filters } from '../filters'
 import type { NocoDBListResponse } from '../nocodb'
@@ -10,7 +11,14 @@ describe('Types', () => {
       abstract: 'Résumé de la décision.',
       canton: 'GE',
       date: '2024-03-15',
-      keywords: [{ id: 'k1', label: 'Santé', category: 'Santé et sécurité sociale' }],
+      keywords: [
+        {
+          id: 'k1',
+          label: 'Santé',
+          category: 'Santé et sécurité sociale',
+          decisionsCount: 3,
+        },
+      ],
       pdfUrl: 'https://example.com/decision.pdf',
     }
     expect(decision.id).toBe('1')
@@ -24,6 +32,7 @@ describe('Types', () => {
       from: '',
       to: '',
       page: 1,
+      sortDir: 'desc',
     }
     expect(filters.page).toBe(1)
   })

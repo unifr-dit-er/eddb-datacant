@@ -37,11 +37,11 @@ describe('useLanguage', () => {
 
   it('t() returns the correct translation string', () => {
     const { result } = renderHook(() => useLanguage(), { wrapper })
-    expect(result.current.t('sidebar.title')).toBe('Protection des données')
+    expect(result.current.t('sidebar.subtitle')).toBe('Jurisprudence · CH')
     act(() => {
       result.current.setLocale('de')
     })
-    expect(result.current.t('sidebar.title')).toBe('Datenschutz')
+    expect(result.current.t('sidebar.subtitle')).toBe('Rechtsprechung · CH')
   })
 
   it('throws when used outside LanguageProvider', () => {
