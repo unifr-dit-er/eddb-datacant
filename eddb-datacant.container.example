@@ -9,7 +9,8 @@ PublishPort=127.0.0.1:8085:3000
 Environment=NOCODB_API_TOKEN=your_token_here
 
 [Service]
-ExecStartPre=/usr/bin/podman rm -f eddb-datacant
+Restart=on-failure
+RestartSec=10s
 
 [Install]
 WantedBy=default.target
